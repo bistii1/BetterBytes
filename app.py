@@ -71,7 +71,7 @@ def get_gpt_info(ingredients):
             ]
         )
         # Correct way to access the content
-        print(gpt_response.choices[1].message)
+        print(gpt_response.choices[0].message)
         gpt_info = gpt_response.choices[0].message
 
         # Convert message to dictionary
