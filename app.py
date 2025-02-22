@@ -2,13 +2,13 @@ from flask import Flask, render_template, request, jsonify
 import base64
 import cv2
 import numpy as np
+import pyzxing  # ZXing library for barcode decoding
 import requests
-from pyzxing import BarCodeReader
 
 app = Flask(__name__)
 
-# Replace with your own USDA Food Data Central API Key
-USDA_API_KEY = 'Y3juRrBZaGXrVnDp9k0UERXRMtYAuY3rKGgWA1nE'
+# Replace with your own USDA API Key
+USDA_API_KEY = 'YOUR_USDA_API_KEY'
 USDA_API_URL = 'https://api.nal.usda.gov/fdc/v1/foods/search'
 
 @app.route('/')
@@ -26,20 +26,27 @@ def scan_barcode():
     np_arr = np.frombuffer(img_data, np.uint8)
     img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
 
-    # Decode the barcode
-    reader = BarCodeReader()
-    decoded = reader.decode(img)
+    # Show the decoded image for debugging (optional)
+    cv2.imshow('Decoded Image', img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
-    if decoded:
-        barcode = decoded[0].get('raw', '')
+    # Using pyzxing to decode the barcode
+    zxing = pyzxing.BarCodeReader()
+    barcode_data = zxing.decode(img)  # Decode the image
+
+    if barcode_data:
+        barcode = barcode_data[0].get('barcode', '')  # Get the barcode data
+        print(f"Decoded Barcode: {barcode}")  # Debugging
         food_info = get_food_info_from_usda(barcode)
-        
+
         if food_info:
             return jsonify({'product_info': food_info})
         else:
             return jsonify({'error': 'Product info not found in USDA database'}), 400
     else:
-        return jsonify({'error': 'No barcode detected'}), 400
+        print("No barcode detected")  # Debugging
+        return jsonify({'error': 'Failed to scan barcode'}), 400
 
 def get_food_info_from_usda(barcode):
     # Make a request to the USDA API
@@ -63,4 +70,4 @@ def get_food_info_from_usda(barcode):
     return None
 
 if __name__ == "__main__":
-    app.run(debug=True, host='127.0.0.1')
+    app.run(debug=True, host='127.0.0.1', port=5000)
