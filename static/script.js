@@ -4,35 +4,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const barcodeDisplay = document.getElementById("barcode");
     const productDisplay = document.getElementById("product-info");
 
-    let barcodeDetected = false;  // Flag to stop multiple barcode detections
+    let barcodeDetected = false;  // Prevent multiple barcode detections
 
-    // Start the front camera
-    navigator.mediaDevices.getUserMedia({
-        video: { facingMode: "user" }
-    })
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
     .then(stream => {
         video.srcObject = stream;
         video.play();
-        // Start scanning as soon as the camera is active
-        startScanning();
+        startScanning(); // Start barcode scanning
     })
     .catch(err => console.error("Camera error:", err));
 
     function startScanning() {
         const context = canvas.getContext("2d");
 
-        const scanInterval = setInterval(() => {
-            if (barcodeDetected) {
-                clearInterval(scanInterval);  // Stop scanning after detecting the first barcode
-                return;
-            }
+        setInterval(() => {
+            if (barcodeDetected) return; // Stop if barcode already detected
 
-            // Draw the video frame to canvas
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
             context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-            // Use QuaggaJS to detect barcode
             Quagga.decodeSingle({
                 decoder: { readers: ["ean_reader", "upc_reader"] },
                 locate: true,
@@ -41,9 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (result && result.codeResult) {
                     let barcode = result.codeResult.code;
                     barcodeDisplay.textContent = barcode;
-                    barcodeDetected = true;  // Set flag to prevent further detections
+                    barcodeDetected = true; // Stop multiple detections
 
-                    // Send barcode to Flask backend
                     fetch('/get-product-info', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -59,6 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
                 }
             });
-        }, 100); // Check every 100ms for a barcode
+        }, 500); // Adjust scanning interval
     }
 });

@@ -8,16 +8,20 @@
     <script src="https://cdn.jsdelivr.net/npm/quagga@0.12.1/dist/quagga.min.js"></script>
 </head>
 <body>
+    <div class="container">
+        <h1>Barcode Scanner</h1>
 
-    <h1>Scan a Barcode</h1>
+        <div id="scanner-container">
+            <video id="camera" autoplay></video>
+            <canvas id="canvas" style="display: none;"></canvas>
+        </div>
 
-    <video id="camera" autoplay></video>
-    <canvas id="canvas" style="display:none;"></canvas> <!-- Hidden canvas used for capturing frames -->
-
-    <p><strong>Detected Barcode:</strong> <span id="barcode"></span></p>
-    <p><strong>Food Product:</strong> <span id=get-product-info">Scan a barcode.</span></p>
+        <div class="output">
+            <p><strong>Detected Barcode:</strong> <span id="barcode">Waiting...</span></p>
+            <p><strong>Food Product:</strong> <span id="product-info">Scan a barcode.</span></p>
+        </div>
+    </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-
 </body>
 </html>
