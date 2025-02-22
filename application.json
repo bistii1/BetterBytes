@@ -1,0 +1,17 @@
+{
+    "id": "<string>",
+    "createdAt": "2023-11-07T05:31:56Z",
+    "status": "PENDING",
+    "model": "<string>",
+    "input": [
+        {
+            "type": "<string>",
+            "url": "<string>"
+        }
+    ],
+    "webhookUrl": {},
+    "options": {},
+    "outputUrl": {},
+    "outputDuration": {},
+    "error": "<string>"
+}
