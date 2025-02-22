@@ -11,7 +11,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")  # Ensure your API key is set
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('scanner.html')
 
 @app.route('/get-product-info', methods=['POST'])
 def get_product_info():
