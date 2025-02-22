@@ -1,0 +1,24 @@
+body {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+video {
+  width: 80%;
+  max-width: 600px;
+  margin-bottom: 10px;
+}
+
+canvas {
+  display: none;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#barcode, #product-info {
+  font-weight: bold;
+}

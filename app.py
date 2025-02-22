@@ -1,73 +1,53 @@
-from flask import Flask, render_template, request, jsonify
-import base64
-import cv2
-import numpy as np
-import pyzxing  # ZXing library for barcode decoding
-import requests
+from flask import Flask, request, jsonify, render_template
+import openai
+from openai import OpenAI
+import os
 
 app = Flask(__name__)
 
-# Replace with your own USDA API Key
-USDA_API_KEY = 'YOUR_USDA_API_KEY'
-USDA_API_URL = 'https://api.nal.usda.gov/fdc/v1/foods/search'
+openai.api_key = "OPENAI_API_KEY"
 
 @app.route('/')
 def home():
     return render_template('index.html')
 
-@app.route('/scan_barcode', methods=['POST'])
-def scan_barcode():
-    # Get the image data from the frontend
-    data = request.get_json()
-    image_data = data['image']  # Base64 encoded image
+@app.route('/get-product-info', methods=['POST'])
+def get_product_info():
+    data = request.json
+    barcode = data.get("barcode")
 
-    # Decode the base64 image
-    img_data = base64.b64decode(image_data)
-    np_arr = np.frombuffer(img_data, np.uint8)
-    img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+    if not barcode:
+        return jsonify({"error": "No barcode provided"}), 400
 
-    # Show the decoded image for debugging (optional)
-    cv2.imshow('Decoded Image', img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    try:
+        print("Trying to send to GPT")
 
-    # Using pyzxing to decode the barcode
-    zxing = pyzxing.BarCodeReader()
-    barcode_data = zxing.decode(img)  # Decode the image
+        # Updated API call using the new OpenAI interface
+        #"What food product has this barcode: {barcode}?"
 
-    if barcode_data:
-        barcode = barcode_data[0].get('barcode', '')  # Get the barcode data
-        print(f"Decoded Barcode: {barcode}")  # Debugging
-        food_info = get_food_info_from_usda(barcode)
+        client = OpenAI()
 
-        if food_info:
-            return jsonify({'product_info': food_info})
-        else:
-            return jsonify({'error': 'Product info not found in USDA database'}), 400
-    else:
-        print("No barcode detected")  # Debugging
-        return jsonify({'error': 'Failed to scan barcode'}), 400
+        completion = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[
+                    {"role": "system", "content": "You are a helpful assistant."},
+                    {
+                        "role": "user",
+                        "content": "What food product has this barcode: {barcode}?"
+                    }
+                ]
+            )
 
-def get_food_info_from_usda(barcode):
-    # Make a request to the USDA API
-    params = {
-        'api_key': USDA_API_KEY,
-        'query': barcode
-    }
-    
-    response = requests.get(USDA_API_URL, params=params)
+        print(completion.choices[0].message)
+                    
+        #product_info = response.choices[0].message
+        #print(f"Product Info: {product_info}")
+        return jsonify({"product": completion.choices[0].message})
 
-    if response.status_code == 200:
-        data = response.json()
-        if 'foods' in data and data['foods']:
-            food = data['foods'][0]  # Get the first result
-            return {
-                'name': food.get('description', 'No name available'),
-                'brand': food.get('brandOwner', 'No brand available'),
-                'calories': food.get('foodNutrients', [{}])[0].get('value', 'No calorie info available'),
-                'ingredients': food.get('ingredients', 'No ingredients available')
-            }
-    return None
+    except Exception as e:
+        print("Error occurred:", e)
+        return jsonify({"error": str(e)}), 500
+
 
 if __name__ == "__main__":
-    app.run(debug=True, host='127.0.0.1', port=5000)
+    app.run(debug=True)

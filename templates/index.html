@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/quagga@0.12.1/dist/quagga.min.js"></script>
+</head>
+<body>
+
+    <h1>Scan a Barcode</h1>
+
+    <video id="camera" autoplay></video>
+    <button id="capture">Capture Image</button>
+    <canvas id="canvas"></canvas>
+
+    <p><strong>Detected Barcode:</strong> <span id="barcode"></span></p>
+    <p><strong>Food Product:</strong> <span id="product-info">Scan a barcode.</span></p>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
