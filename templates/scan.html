@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Better Bytes</title>
+    <link rel="stylesheet" href="scan.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scan.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="home.html">Better Bytes</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="scan.html">Scan</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="body-content">
+        <h1>Scan a Product</h1>
+
+        <div class="scan-section">
+            <!-- Left Side (Scan Box + Large Box) -->
+            <div class="left-section">
+                <div class="info-box-large">
+                    <p>Product details or additional information can go here.</p>
+                </div>
+
+                <div class="scanner">
+                    <p class="open-text">open</p>
+                    <div class="scan-box">
+                        <img src="image-not-found.png" alt="Scanning product">
+                    </div>
+                    <button class="scan-btn">SCAN!</button>
+                </div>
+            </div>
+
+            <!-- Right Side (Pie Chart + Text) -->
+            <div class="right-section">
+                <div class="product-info">
+                    <h2 class="product-name">NAME OF PRODUCT</h2>
+
+                    <!-- Centered Rating Bar -->
+                    <div class="rating-bar">
+                        <span class="rating-segment"></span>
+                        <span class="rating-segment"></span>
+                        <span class="rating-segment"></span>
+                        <span class="rating-segment"></span>
+                        <span class="rating-segment"></span>
+                    </div>
+
+                    <!-- Scan Button -->
+                    <button class="scan-btn" onclick="fillRatingBar(3)">SCAN!</button>
+
+                    <!-- Buttons for selecting a rating (1-5) -->
+                    <div class="rating-buttons">
+                        <button onclick="highlightSegment(1)">1</button>
+                        <button onclick="highlightSegment(2)">2</button>
+                        <button onclick="highlightSegment(3)">3</button>
+                        <button onclick="highlightSegment(4)">4</button>
+                        <button onclick="highlightSegment(5)">5</button>
+                    </div>
+
+
+                    <div class="info-box">
+                        <h3>Info:</h3>
+                        <p class="harmful-ingredients">Harmful Ingredients:</p>
+                        <ul class="ingredient-list">
+                            <li>X</li>
+                            <li>Y</li>
+                            <li>Z</li>
+                        </ul>
+                    </div>
+
+                    <div class="diet-info">
+                        <h3>For your diet:</h3>
+                        <input type="text" placeholder="Enter dietary preference">
+                    </div>
+
+                    <h2>Harmful Ingredients Breakdown</h2>
+                    <div class="chart-container">
+                        <canvas id="myPieChart"></canvas>
+                    </div>
+
+                    <button class="more-info-btn">Too many words? Hear from me →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('myPieChart').getContext('2d');
+
+        let myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Ingredient X', 'Ingredient Y', 'Ingredient Z'],
+                datasets: [{
+                    data: [10, 20, 30],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        function updateChart() {
+            let newData = [
+                parseInt(document.getElementById('input1').value),
+                parseInt(document.getElementById('input2').value),
+                parseInt(document.getElementById('input3').value)
+            ];
+            myPieChart.data.datasets[0].data = newData;
+            myPieChart.update();
+        }
+    </script>
+
+</body>
+
+</html>
