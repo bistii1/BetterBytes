@@ -11,16 +11,14 @@
     <div class="container">
         <h1>Barcode Scanner</h1>
 
-        <div id="scanner-container">
-            <video id="camera" autoplay></video>
-            <canvas id="canvas" style="display: none;"></canvas>
-        </div>
+    <h1>Scan a Barcode</h1>
 
-        <div class="output">
-            <p><strong>Detected Barcode:</strong> <span id="barcode">Waiting...</span></p>
-            <p><strong>Food Product:</strong> <span id="product-info">Scan a barcode.</span></p>
-        </div>
-    </div>
+    <video id="camera" autoplay></video>
+    <canvas id="canvas" style="display:none;"></canvas> <!-- Hidden canvas used for capturing frames -->
+
+    <p><strong>Detected Barcode:</strong> <span id="barcode"></span></p>
+    <p><strong>Food Product:</strong> <span id="product-info">Scan a barcode to see product details.</span></p>
+    <p><strong>GPT Response:</strong> <span id="gpt-info">Awaiting info...</span></p>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
