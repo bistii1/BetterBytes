@@ -1,11 +1,7 @@
 from flask import Flask, request, jsonify, render_template
-import openai
-from openai import OpenAI
-import os
+import requests  # Use requests to interact with Open Food Facts API
 
 app = Flask(__name__)
-
-openai.api_key = "OPENAI_API_KEY"
 
 @app.route('/')
 def home():
@@ -20,34 +16,33 @@ def get_product_info():
         return jsonify({"error": "No barcode provided"}), 400
 
     try:
-        print("Trying to send to GPT")
+        print(f"Fetching product information for barcode: {barcode}")
 
-        # Updated API call using the new OpenAI interface
-        #"What food product has this barcode: {barcode}?"
+        # Open Food Facts API URL
+        api_url = f"https://world.openfoodfacts.org/api/v0/product/{barcode}.json"
+        
+        # Make a GET request to the Open Food Facts API
+        response = requests.get(api_url)
+        
+        # If the response is successful (status code 200)
+        if response.status_code == 200:
+            product_data = response.json()
 
-        client = OpenAI()
+            # Check if product information is found
+            if product_data.get("status") == 1:
+                product_name = product_data.get("product", {}).get("product_name", "Product name not found.")
+            else:
+                product_name = "Product not found in Open Food Facts database."
+            
+            print(f"Product Info: {product_name}")
+            return jsonify({"product": product_name})
 
-        completion = client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {"role": "system", "content": "You are a helpful assistant."},
-                    {
-                        "role": "user",
-                        "content": "What food product has this barcode: {barcode}?"
-                    }
-                ]
-            )
-
-        print(completion.choices[0].message)
-                    
-        #product_info = response.choices[0].message
-        #print(f"Product Info: {product_info}")
-        return jsonify({"product": completion.choices[0].message})
+        else:
+            return jsonify({"error": "Failed to fetch product info"}), 500
 
     except Exception as e:
         print("Error occurred:", e)
         return jsonify({"error": str(e)}), 500
 
-
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5001)  # Running on port 5001
