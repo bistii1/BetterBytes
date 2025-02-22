@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode Scanner</title>
+    <script src="https://serratus.github.io/quaggaJS/examples/js/quagga.min.js"></script>
+</head>
+<body>
+    <h1>Scan a Barcode</h1>
+    <video id="scanner" style="width: 100%;"></video>
+    <p><strong>Scanned UPC:</strong> <span id="barcode-result"></span></p>
+    <div id="food-info"></div>
+
+    <script>
+        const apiKey = "YOUR_USDA_API_KEY";  // Replace with your actual API key
+
+        // Start Quagga barcode scanner
+        Quagga.init({
+            inputStream: { name: "Live", type: "LiveStream", target: document.querySelector("#scanner") },
+            decoder: { readers: ["ean_reader", "upc_reader"] }  // UPC and EAN barcodes
+        }, function(err) {
+            if (err) {
+                console.error("QuaggaJS Error:", err);
+                return;
+            }
+            Quagga.start();
+        });
+
+        // When a barcode is detected
+        Quagga.onDetected(function(result) {
+            let upcCode = result.codeResult.code;
+            document.getElementById("barcode-result").textContent = upcCode;
+            fetchFoodData(upcCode);
+        });
+
+        // Function to fetch food info from USDA API
+        function fetchFoodData(upc) {
+            let url = `https://api.nal.usda.gov/fdc/v1/foods/search?query=${upc}&api_key=${apiKey}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.foods && data.foods.length > 0) {
+                        let food = data.foods[0];  // Get the first result
+                        document.getElementById("food-info").innerHTML = `
+                            <h2>${food.description}</h2>
+                            <p><strong>Brand:</strong> ${food.brandOwner || "N/A"}</p>
+                            <p><strong>Ingredients:</strong> ${food.ingredients || "N/A"}</p>
+                        `;
+                    } else {
+                        document.getElementById("food-info").innerHTML = "<p>No food data found.</p>";
+                    }
+                })
+                .catch(error => console.error("Error fetching food data:", error));
+        }
+    </script>
+</body>
+</html>
+import cv2
+from pyzbar.pyzbar import decode
+
+def scan_barcode():
+    cap = cv2.VideoCapture(0)  # Open webcam (0 = default camera)
+
+    while True:
+        ret, frame = cap.read()  # Read frame from webcam
+        if not ret:
+            break
+
+        # Convert frame to grayscale (improves detection)
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+        # Detect and decode barcodes
+        barcodes = decode(gray)
+        for barcode in barcodes:
+            barcode_data = barcode.data.decode("utf-8")  # Get the barcode data
+            barcode_type = barcode.type  # Barcode type (EAN, UPC, etc.)
+
+            # Draw rectangle around the barcode
+            x, y, w, h = barcode.rect
+            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+            # Display the barcode data
+            text = f"{barcode_data} ({barcode_type})"
+            cv2.putText(frame, text, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+
+            print(f"Scanned Barcode: {barcode_data} ({barcode_type})")
+
+        # Show the video feed
+        cv2.imshow("Barcode Scanner", frame)
+
+        # Press 'q' to exit
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()
+
+# Run the scanner
+scan_barcode()
