@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const canvas = document.getElementById("canvas");
     const barcodeDisplay = document.getElementById("barcode");
     const productDisplay = document.getElementById("product-info");
+    const gptDisplay = document.getElementById("gpt-info");  // Add a new element for GPT info
 
     let barcodeDetected = false;  // Flag to stop multiple barcode detections
 
@@ -51,7 +52,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     })
                     .then(response => response.json())
                     .then(data => {
+                        // Display product name
                         productDisplay.textContent = data.product || "Product not found.";
+
+                        // Display GPT-4 response if available
+                        gptDisplay.textContent = data.gpt_info || "No detailed info available from GPT.";
                     })
                     .catch(error => {
                         console.error("Error fetching product info:", error);
