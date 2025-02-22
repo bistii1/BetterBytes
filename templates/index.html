@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode Scanner</title>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera@0.4.1638425929/"></script>
+</head>
+<body>
+    <h1>Scan Barcode with Webcam</h1>
+    
+    <video id="video" width="640" height="480" autoplay></video>
+    <button id="scanButton">Scan Barcode</button>
+    
+    <div id="product-info"></div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
