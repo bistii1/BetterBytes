@@ -7,7 +7,7 @@ from openai import OpenAI
 
 app = Flask(__name__)
 
-openai.api_key = os.getenv("OPENAI_API_KEY")  # Ensure your API key is set
+openai.api_key = os.getenv("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")  # Ensure your API key is set
 
 @app.route('/')
 def home():
@@ -60,7 +60,7 @@ def get_gpt_info(ingredients):
     try:
         client = OpenAI()
 
-        gpt_response = client.chat.completions.create(
+        gpt_response= client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "You are a food specialist. Provide a concise, list-formatted explanation of potentially harmful ingredients."},
@@ -70,12 +70,23 @@ def get_gpt_info(ingredients):
                 }
             ]
         )
-        # Access only the content of the first choice
-        gpt_info = gpt_response.choices[0].message['content']
+        # Correct way to access the content
+        print(gpt_response.choices[1].message)
+        gpt_info = gpt_response.choices[0].message
 
-        # Return just the content as a string (no need for JSON serialization)
-        return gpt_info
-    
+        # Convert message to dictionary
+        def message_to_dict(message_obj):
+            return {
+                "role": message_obj.role,
+                "content": message_obj.content
+            }
+
+        # Convert the message object to a dictionary
+        gpt_info = message_to_dict(gpt_info)
+
+        # Return the dictionary as JSON
+        return json.dumps(gpt_info)  # Ensure it’s JSON serializable
+
     except Exception as e:
         print("Error fetching GPT-4 information:", e)
         return "Error retrieving detailed information from GPT-4."
