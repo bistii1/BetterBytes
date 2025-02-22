@@ -71,21 +71,11 @@ def get_gpt_info(ingredients):
             ]
         )
         # Correct way to access the content
-        print(gpt_response.choices[0].message)
-        gpt_info = gpt_response.choices[0].message
+        gpt_info = gpt_response.choices[0].message['content']
+        print(gpt_info)
 
-        # Convert message to dictionary
-        def message_to_dict(message_obj):
-            return {
-                "role": message_obj.role,
-                "content": message_obj.content
-            }
+        return gpt_info
 
-        # Convert the message object to a dictionary
-        gpt_info = message_to_dict(gpt_info)
-
-        # Return the dictionary as JSON
-        return json.dumps(gpt_info)  # Ensure it’s JSON serializable
 
     except Exception as e:
         print("Error fetching GPT-4 information:", e)

@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     .catch(error => {
                         console.error("Error fetching product info:", error);
                         productDisplay.textContent = "Error fetching product info.";
+                        gptDisplay.textContent = "Error retrieving GPT-4 information.";
                     });
                 }
             });
