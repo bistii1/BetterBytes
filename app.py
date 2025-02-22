@@ -60,33 +60,22 @@ def get_gpt_info(ingredients):
     try:
         client = OpenAI()
 
-        gpt_response= client.chat.completions.create(
+        gpt_response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "You are a food specialist."},
+                {"role": "system", "content": "You are a food specialist. Provide a concise, list-formatted explanation of potentially harmful ingredients."},
                 {
                     "role": "user",
-                    "content": f"Provide a detailed explanation of the following ingredients: {ingredients}"
+                    "content": f"Provide an explanation of ingredients in this list that may be harmful without special characters: {ingredients}"
                 }
             ]
         )
-        # Correct way to access the content
-        print(gpt_response.choices[0].message)
-        gpt_info = gpt_response.choices[0].message
+        # Access only the content of the first choice
+        gpt_info = gpt_response.choices[0].message['content']
 
-        # Convert message to dictionary
-        def message_to_dict(message_obj):
-            return {
-                "role": message_obj.role,
-                "content": message_obj.content
-            }
-
-        # Convert the message object to a dictionary
-        gpt_info = message_to_dict(gpt_info)
-
-        # Return the dictionary as JSON
-        return json.dumps(gpt_info)  # Ensure it’s JSON serializable
-
+        # Return just the content as a string (no need for JSON serialization)
+        return gpt_info
+    
     except Exception as e:
         print("Error fetching GPT-4 information:", e)
         return "Error retrieving detailed information from GPT-4."
