@@ -5,6 +5,8 @@
     box-sizing: border-box;
 }
 
+/* Random commit TEST */
+
 body {
     font-family: 'Montesarrat', monospace; /* Apply Geist Mono font */
     line-height: 1.6;
@@ -99,7 +101,7 @@ nav ul li a:hover {
 }
 
 .hero .content .cta-button {
-    background-color:rgb(23, 32, 73);
+    background-color: rgb(23, 32, 73);
     padding: 10px 20px;
     color: white;
     text-decoration: none;
@@ -109,7 +111,7 @@ nav ul li a:hover {
 }
 
 .hero .content .cta-button:hover {
-    background-color:rgb(23, 32, 73);
+    background-color: rgb(23, 32, 73);
 }
 
 .section-content {
@@ -217,16 +219,22 @@ body {
 
 .step-container {
     width: 32%; /* Each video container takes up 32% width, leaving space between them */
-    height: 700px; /* Set a taller fixed height for each video container */
+    height: 700px; /* Set a fixed height for each video container */
     position: relative;
     overflow: hidden;
+    transition: transform 0.3s ease-in-out; /* Smooth transition for scaling */
+}
+
+.step-container:hover {
+    transform: scale(1.1); /* Enlarge video on hover */
+    z-index: 1; /* Bring the hovered container to the front */
 }
 
 .step-video {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensure the video fills the container and is cropped */
-    object-position: center; /* Ensures the video is centered */
+    object-fit: cover;
+    object-position: center;
 }
 
 .step-overlay {
@@ -236,18 +244,22 @@ body {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: white;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.5); /* Darken background for text readability */
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
 }
 
-.step-overlay h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+.step-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 10px; /* Space between title and description */
 }
 
-.step-overlay p {
-    font-size: 1.2rem;
+.step-description {
+    font-style: italic;
+    font-size: 1rem;
 }
