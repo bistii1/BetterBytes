@@ -63,7 +63,7 @@ def get_gpt_info(ingredients):
         gpt_response= client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "You are a food specialist. Provide a concise, list-formatted explanation of potentially harmful ingredients."},
+                {"role": "system", "content": "You are a food specialist. Provide a short bulleted of potentially harmful ingredients."},
                 {
                     "role": "user",
                     "content": f"Provide an explanation of ingredients in this list that may be harmful without special characters: {ingredients}"
@@ -71,8 +71,8 @@ def get_gpt_info(ingredients):
             ]
         )
         # Correct way to access the content
-        print(gpt_response.choices[0].message)
-        gpt_info = gpt_response.choices[0].message
+        gpt_info = gpt_response.choices[0].message.content
+        print(gpt_info)
 
         # Convert message to dictionary
         def message_to_dict(message_obj):
@@ -82,7 +82,7 @@ def get_gpt_info(ingredients):
             }
 
         # Convert the message object to a dictionary
-        gpt_info = message_to_dict(gpt_info)
+        # gpt_info = message_to_dict(gpt_info)
 
         # Return the dictionary as JSON
         return json.dumps(gpt_info)  # Ensure it’s JSON serializable

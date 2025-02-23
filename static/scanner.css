@@ -85,7 +85,7 @@ button:hover {
 }
 
 .scrollable-box {
-  width: 100%;
+  width: 90%;  /* Reduce width to center it better */
   max-height: 150px;
   overflow-y: auto;
   border: 1px solid #ccc;
@@ -93,4 +93,6 @@ button:hover {
   background: #fff3e6;
   text-align: left;
   border-radius: 5px;
+  margin: 0 auto; /* Centers it under the product info */
+  display: block;
 }
