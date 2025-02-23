@@ -27,7 +27,7 @@ def personalize():
 
         return render_template('personalize.html', message="Your information has been saved successfully!")
 
-    return render_template('personalize.html', message="Enter your personalized information below:")
+    return render_template('personalize.html', message="Click the save button to include your preferences in your result!")
 
 
 @app.route('/get-product-info', methods=['POST'])

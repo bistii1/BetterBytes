@@ -4,25 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personalize Your Information</title>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/personalize.css">
 </head>
 <body>
-    <div class="topnav">
-        <a href="/">Home</a>
-        <a href="/scanner">Scan</a>
-        <a href="#contact">Hear</a>
-        <a class="active" href="#Personalize">Personalize</a>
-    </div>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <p>Better Bytes</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#personalize">Personalize</a></li>
+                <li><a href="/scan">Scan</a></li>
+                <li><a href="#contact">Hear</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <!-- Personalization Form -->
     <div class="form-container">
-        <h1>Personalize Your Information</h1>
-
+        <h1><span class="typing-effect">Personalize Your Information</span></h1>
         <form action="/personalize" method="POST">
-            <label for="user_input">Your Information:</label>
-            <textarea id="user_input" name="user_input" rows="4" cols="50" required></textarea><br><br>
+            <label for="user_input">Enter your dietary preferences below:</label>
+            <textarea id="user_input" name="user_input" rows="4" cols="50" placeholder="Example: I want to avoid red40" required></textarea><br><br>
             <button type="submit">Save</button>
         </form>
-
         <p>{{ message }}</p>
     </div>
 </body>
