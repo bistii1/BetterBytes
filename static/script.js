@@ -46,8 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         productDisplay.textContent = data.product || "Product not found.";
 
                         // Display GPT-4 response if available
-                        gptDisplay.innerHTML = data.gpt_info
-                        .replace(/^\s*"(.*?)"\s*$/, "$1") // Remove leading and trailing quotes
+                        text_info = data.gpt_info.replace(/^\s*"(.*?)"\s*$/, "$1") // Remove leading and trailing quotes
                         .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // Convert **bold** to <strong>
                         .replace(/\\n/g, "<br>") // Convert \n to <br> for line breaks
                         .replace(/\\u2019/g, "'") // Fix the unicode for apostrophe
@@ -55,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         .replace(/- /g, "<li>")  // Convert bullet points to <li> for list formatting
                         .replace(/<\/li>/g, "</li><br>") // Add line breaks between list items
                         .replace(/<\/li><br><br>/g, "</li>"); // Clean extra breaks
+                        gptDisplay.innerHTML = text_info
                     })
                     .catch(error => {
                         console.error("Error fetching product info:", error);
