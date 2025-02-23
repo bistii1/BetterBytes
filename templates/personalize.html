@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalize Your Information</title>
+    <link rel="stylesheet" href="/static/personalize.css">
+</head>
+<body>
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/scanner">Scan</a>
+        <a href="#contact">Hear</a>
+        <a class="active" href="#Personalize">Personalize</a>
+    </div>
+
+    <div class="form-container">
+        <h1>Personalize Your Information</h1>
+
+        <form action="/personalize" method="POST">
+            <label for="user_input">Your Information:</label>
+            <textarea id="user_input" name="user_input" rows="4" cols="50" required></textarea><br><br>
+            <button type="submit">Save</button>
+        </form>
+
+        <p>{{ message }}</p>
+    </div>
+</body>
+</html>

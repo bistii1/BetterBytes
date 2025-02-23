@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<link rel="stylesheet" href="/static/home.css">
+<style>
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("/static/Boilermake/snack_background.png");
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
+}
+</style>
+</head>
+<body>
+
+  <div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="/scanner">Scan</a>
+    <a href="#contact">Hear</a>
+    <a href="/personalize">Personalize</a>
+  </div>
+
+<!-- Header with image -->
+<header class="bgimg w3-display-container" id="home">
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-white" style="font-size:90px">Better<br>Bytes</span>
+  </div>
+</header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-large">
+
+<!-- About Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">KNOW YOUR FOOD</span></h5>
+    <p>Better Bytes allows you to scan the barcode of a food item product and instantly see if it contains any potentially harmful ingredients. Make more informed choices about what goes into your body every day.</p>
+    <p>Our goal is to provide users with a quick and reliable way to stay safe by checking the contents of the food products they buy.</p>
+  </div>
+</div>
+
+<!-- Menu Container -->
+<div class="w3-container" id="menu">
+  <div class="w3-content" style="max-width:700px">
+ 
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">FEATURES</span></h5>
+  
+    <div class="w3-row w3-center w3-card w3-padding">
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Scan');" id="myLink">
+        <div class="w3-col s6 tablink">Scan</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Hear');">
+        <div class="w3-col s6 tablink">Hear</div>
+      </a>
+    </div>
+
+    <div id="Scan" class="w3-container menu w3-padding-48 w3-card">
+      <h5>Scan a Product Barcode</h5>
+      <p class="w3-text-grey">With Better Bytes, you can simply scan the barcode of any product and instantly receive detailed information about its ingredients. If any ingredients are potentially harmful, we’ll alert you with professional insights, helping you make safer choices. You can scan the barcode using the built-in scanner feature or manually input the barcode number to check the product.</p>
+      <p class="w3-text-grey">Simply click the "Scan" button to get started with scanning a product's barcode. The system will provide you with information about the product's name, ingredients, and highlight any potentially harmful substances based on expert analysis.</p>
+    </div>
+
+    <div id="Hear" class="w3-container menu w3-padding-48 w3-card">
+      <h5>Hear Product Information from a Professional</h5>
+      <p class="w3-text-grey">Not only can you scan barcodes for product information, but you’ll also have the option to hear detailed explanations of the product’s ingredients from a professional. This feature allows you to listen to a specialist who explains the potential risks associated with certain ingredients and suggests safer alternatives if necessary.</p>
+      <p class="w3-text-grey">To use the "Hear" feature, simply click on the "Listen" button after scanning a product. You'll then be able to hear the information spoken aloud, making it easier to understand the potential risks and benefits of the products you use.</p>
+    </div>
+
+<!-- End page content -->
+</div>
+<script>
+  // Tabbed Menu
+  function openMenu(evt, menuName) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("menu");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" w3-yellow", "");
+    }
+    document.getElementById(menuName).style.display = "block";
+    evt.currentTarget.firstElementChild.className += " w3-yellow";
+  }
+  document.getElementById("myLink").click();
+  </script>
+
+<script>
+document.getElementById("myLink").click();
+</script>
+
+</body>
+</html>
