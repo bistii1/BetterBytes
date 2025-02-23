@@ -104,6 +104,14 @@ h1 {
   text-align: center; /* Horizontally center text */
 }
 
+.scanner-note {
+  font-size: 16px;
+  color: black;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: normal;
+}
+
 /* Container for the scanner and product info, use flexbox */
 .scanner-info-container {
   display: flex;
@@ -153,3 +161,32 @@ h1 {
   border: 1px solid #ddd;
   padding: 10px;
 }
+
+.scanner-note {
+        font-size: 16px;
+        color: #333;
+        text-align: center;
+        margin-top: 10px;
+        font-weight: normal;
+  }
+
+    /* Add styles for the Rescan button */
+    .rescan-button {
+        margin-top: 20px;
+        display: block;
+        width: 150px;
+        padding: 10px;
+        font-size: 16px;
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .rescan-button:hover {
+        background-color: rgb(69, 69, 69);
+    }

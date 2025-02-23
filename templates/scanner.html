@@ -26,10 +26,14 @@
 <body>
     <div class="container">
         <h1><b> Barcode Scanner </b></h1>
+        <!-- Text below the barcode scanner -->
+        <p class="scanner-note">Make sure your barcode is as flat as possible and hold it up to the webcam.</p>
         <div class="scanner-info-container">
             <div id="scanner-container">
                 <video id="camera" autoplay></video>
                 <canvas id="canvas" style="display:none;"></canvas>
+                <!-- Rescan Button -->
+                <button id="rescan-button" class="rescan-button">Rescan</button>
             </div>
 
             <div class="product-info">
@@ -40,29 +44,16 @@
                     <p><strong>Ingredient Information:</strong></p>
                     <div id="gpt-info" class="scrollable-box">Awaiting info...</div>
                 </div>
-
-                <!-- Box for Food Product -->
-                <!-- <div class="info-box">
-                    <p><strong>Food Product:</strong> <span id="product-info">Scan a barcode to see product details.</span></p>
-                </div> -->
-
-                <!-- Box for Ingredient Information -->
-                <!-- <div class="info-box">
-                    <p><strong>Ingredient Information:</strong></p>
-                    <div id="gpt-info" class="scrollable-box">Awaiting info...</div>
-                </div> -->
-
-                <!-- Box for Personalization (optional) -->
-                <!-- {% if personalization %} -->
-                <!-- Box for Personalization (initially hidden) -->
-                    <!-- <div id="personalization-box" class="info-box" style="display:none;">
-                        <h3>Personalization:</h3>
-                        <p id="personalization-content"></p>
-                    </div>
-                {% endif %} -->
             </div>
         </div>
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
+
+<!-- JavaScript to handle the Rescan functionality -->
+<script>
+    document.getElementById('rescan-button').addEventListener('click', function() {
+        window.location.reload();
+    });
+</script>
