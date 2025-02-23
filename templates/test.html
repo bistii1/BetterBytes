@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website</title>
     <link href="https://fonts.googleapis.com/css2?family=Geist+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/Users/bistipotdar/BetterBytes-2/static/test.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='test.css') }}">
 </head>
 <body>
     <header>
@@ -42,33 +42,39 @@
 
     <section class="steps">
         <div class="step-container">
-            <div class="step-overlay">
-                <h2 class="step-title">Step 1:</h2>
-                <p class="step-description">Personalize your plan</p>
-            </div>
-            <video class="step-video" autoplay muted loop>
-                <source src="/Users/bistipotdar/BetterBytes-2/static/Boilermake/typing.mov" type="video/mp4">
-            </video>
+            <a href="/Users/bistipotdar/Boilermake2025/BetterBytes/templates/personalize.html">
+                <div class="step-overlay">
+                    <h2 class="step-title">Step 1:</h2>
+                    <p class="step-description">Personalize your plan</p>
+                </div>
+                <video class="step-video" autoplay muted loop style="pointer-events: none;">
+                    <source src="/Users/bistipotdar/BetterBytes-2/static/Boilermake/typing.mov" type="video/mp4">
+                </video>
+            </a>
         </div>
     
         <div class="step-container">
-            <div class="step-overlay">
-                <h2 class="step-title">Step 2:</h2>
-                <p class="step-description">Scan your snacks</p>
-            </div>
-            <video class="step-video" autoplay muted loop>
-                <source src="/Users/bistipotdar/BetterBytes-2/static/Boilermake/scanningphone.mov" type="video/mp4">
-            </video>
+            <a href="scan.html">
+                <div class="step-overlay">
+                    <h2 class="step-title">Step 2:</h2>
+                    <p class="step-description">Scan your snacks</p>
+                </div>
+                <video class="step-video" autoplay muted loop style="pointer-events: none;">
+                    <source src="/Users/bistipotdar/BetterBytes-2/static/Boilermake/scanningphone.mov" type="video/mp4">
+                </video>
+            </a>
         </div>
     
         <div class="step-container">
-            <div class="step-overlay">
-                <h2 class="step-title">Step 3:</h2>
-                <p class="step-description">Hear it from a nutritionist!</p>
-            </div>
-            <video class="step-video" autoplay muted loop>
-                <source src="/Users/bistipotdar/BetterBytes-2/static/Boilermake/nutritionist.mov" type="video/mp4">
-            </video>
+            <a href="hear.html">
+                <div class="step-overlay">
+                    <h2 class="step-title">Step 3:</h2>
+                    <p class="step-description">Hear it from a nutritionist!</p>
+                </div>
+                <video class="step-video" autoplay muted loop style="pointer-events: none;">
+                    <source src="/Users/bistipotdar/BetterBytes-2/static/Boilermake/nutritionist.mov" type="video/mp4">
+                </video>
+            </a>
         </div>
     </section>
     
@@ -79,6 +85,8 @@
 
     <!-- JavaScript at the bottom -->
     <script>
+
+        
         // Function to check if an element is in the viewport
         function isElementInViewport(el) {
             const rect = el.getBoundingClientRect();
@@ -88,13 +96,22 @@
         // Function to handle scroll event
         function handleScroll() {
             const animatedText = document.getElementById('animated-text');
+            const chartSection = document.getElementById('harmful-ingredients');
+
+            // Check if the animated text is in the viewport
             if (isElementInViewport(animatedText)) {
-                animatedText.classList.add('visible'); // Add visible class to trigger animation
+                animatedText.classList.add('visible');
+            }
+
+            // Check if the chart section is in the viewport
+            if (isElementInViewport(chartSection)) {
+                chartSection.classList.add('visible'); // Add visible class to trigger animation
             }
         }
 
         // Add the scroll event listener
         window.addEventListener('scroll', handleScroll);
+    </script>
     </script>
 </body>
 </html>

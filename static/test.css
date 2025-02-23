@@ -6,7 +6,6 @@
 }
 
 /* Random commit TEST */
-
 body {
     font-family: 'Montesarrat', monospace; /* Apply Geist Mono font */
     line-height: 1.6;
@@ -263,3 +262,10 @@ body {
     font-style: italic;
     font-size: 1rem;
 }
+
+#harmful-ingredients {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+}
+
