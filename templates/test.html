@@ -24,7 +24,7 @@
     <section id="hero" class="hero">
         <div class="video-overlay">
             <video id="hero-video" autoplay muted loop>
-                <source src="https://www.pexels.com/video/couple-paying-at-the-counter-in-the-grocery-4121754/download/" type="video/mp4">
+                <source src="/Users/bistipotdar/BetterBytes-2/templates/Boilermake/Screen Recording 2025-02-22 at 8.12.22 PM.mov" type="video/mp4">
             </video>
             <div class="content">
                 <h1>Eat Better.</h1>
@@ -44,10 +44,9 @@
             <div class="step-overlay">
                 <h2>Step 1: </h2>
                 <p>Learn the basics</p>
-
             </div>
             <video class="step-video" autoplay muted loop>
-                <source src="https://www.pexels.com/video/couple-paying-at-the-counter-in-the-grocery-4121754/" type="video/mp4">
+                <source src="/Users/bistipotdar/BetterBytes-2/templates/Boilermake/Screen Recording 2025-02-22 at 8.12.22 PM.mov" type="video/mp4">
             </video>
         </div>
     
@@ -57,4 +56,43 @@
                 <p>Get hands-on experience</p>
             </div>
             <video class="step-video" autoplay muted loop>
-                <source src="https://www.pexels.com/video/couple-paying-at-
+                <source src="/Users/bistipotdar/BetterBytes-2/templates/Boilermake/Screen Recording 2025-02-22 at 8.12.22 PM.mov" type="video/mp4">
+            </video>
+        </div>
+    
+        <div class="step-container">
+            <div class="step-overlay">
+                <h2>Step 3: </h2>
+                <p>Achieve your goals</p>
+            </div>
+            <video class="step-video" autoplay muted loop>
+                <source src="/Users/bistipotdar/BetterBytes-2/templates/Boilermake/Screen Recording 2025-02-22 at 8.12.22 PM.mov" type="video/mp4">
+            </video>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Your Company. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript at the bottom -->
+    <script>
+        // Function to check if an element is in the viewport
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return rect.top >= 0 && rect.bottom <= window.innerHeight;
+        }
+
+        // Function to handle scroll event
+        function handleScroll() {
+            const animatedText = document.getElementById('animated-text');
+            if (isElementInViewport(animatedText)) {
+                animatedText.classList.add('visible'); // Add visible class to trigger animation
+            }
+        }
+
+        // Add the scroll event listener
+        window.addEventListener('scroll', handleScroll);
+    </script>
+</body>
+</html>
