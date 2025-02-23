@@ -34,7 +34,8 @@
         </div>
     </section>
 
-    <section class="animated-text">
+    <!-- Animated Text Section -->
+    <section class="animated-text" id="animated-text">
         <h2>We know picking the right food can be hard. <br> Let us make it easy for you.</h2>
     </section>
 
@@ -70,10 +71,28 @@
         </div>
     </section>
     
-    
-    
     <footer>
         <p>&copy; 2025 Your Company. All Rights Reserved.</p>
     </footer>
+
+    <!-- JavaScript at the bottom -->
+    <script>
+        // Function to check if an element is in the viewport
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return rect.top >= 0 && rect.bottom <= window.innerHeight;
+        }
+
+        // Function to handle scroll event
+        function handleScroll() {
+            const animatedText = document.getElementById('animated-text');
+            if (isElementInViewport(animatedText)) {
+                animatedText.classList.add('visible'); // Add visible class to trigger animation
+            }
+        }
+
+        // Add the scroll event listener
+        window.addEventListener('scroll', handleScroll);
+    </script>
 </body>
 </html>

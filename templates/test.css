@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: 'Geist Mono', monospace; /* Apply Geist Mono font */
+    font-family: 'Montesarrat', monospace; /* Apply Geist Mono font */
     line-height: 1.6;
 }
 
@@ -89,17 +89,17 @@ nav ul li a:hover {
 }
 
 .hero .content h1 {
-    font-size: 3rem;
+    font-size: 5rem;
     margin-bottom: 10px;
 }
 
 .hero .content p {
-    font-size: 1.2rem;
+    font-size: 2rem;
     margin-bottom: 20px;
 }
 
 .hero .content .cta-button {
-    background-color: #ff7f50;
+    background-color:rgb(23, 32, 73);
     padding: 10px 20px;
     color: white;
     text-decoration: none;
@@ -109,7 +109,7 @@ nav ul li a:hover {
 }
 
 .hero .content .cta-button:hover {
-    background-color: #ff4500;
+    background-color:rgb(23, 32, 73);
 }
 
 .section-content {
@@ -135,30 +135,75 @@ footer p {
     font-size: 1rem;
 }
 
+/* General styling */
+body {
+    font-family: 'Geist Mono', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Hero section */
+#hero {
+    position: relative;
+    height: 100vh;
+    background-color: #000;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay on video */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content {
+    z-index: 1;
+    color: #fff;
+    text-align: center;
+}
+
+.cta-button {
+    background-color: #f00;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
 /* Animated Text Section */
 .animated-text {
     text-align: center;
-    margin-top: 100px;
-    margin-bottom: 40px; /* Space between text and the videos */
+    padding: 150px 0 50px 0; /* Increased top padding */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.animated-text.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .animated-text h2 {
-    font-size: 2rem;
-    font-style: bold;
-    color: #333;
-    animation: fadeIn 3s ease-in-out; /* Apply fade-in animation */
-}
-
-/* Animation Keyframes */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
 }
 
 /* New Steps Section */
