@@ -11,7 +11,7 @@ openai.api_key = os.getenv("sk-proj-n-N-H_sF02dJZHDhX5JSfV6DC48hAb_QXutED_Awhf4i
 
 @app.route('/')
 def home():
-    return render_template('homepage.html')
+    return render_template('test.html')
 
 @app.route('/scanner')
 def scanner():
