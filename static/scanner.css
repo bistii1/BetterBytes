@@ -152,3 +152,46 @@ h1 {
   font-weight: normal; /* Remove bold */
   text-align: center; /* Horizontally center text */
 }
+
+/* Container for the scanner and product info, use flexbox */
+.scanner-info-container {
+  display: flex;
+  justify-content: space-between; /* Space between webcam and text */
+  align-items: flex-start; /* Align items at the top */
+  width: 100%;
+}
+
+.scanner-layout {
+  display: flex;
+  justify-content: space-between; /* Space between the webcam and product info */
+  width: 100%;
+}
+
+#scanner-container {
+  width: 60%; /* Webcam takes up 60% of the width */
+}
+
+.product-info {
+  width: 35%; /* Text section takes up 35% */
+  padding-left: 20px;
+}
+
+.info-box {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#camera {
+  width: 100%; /* Ensure the webcam video fills its container */
+  height: auto;
+}
+
+.scrollable-box {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
