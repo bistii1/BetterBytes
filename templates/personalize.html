@@ -73,16 +73,16 @@
         }
     </style>
 
-<button class="next-button" onclick="window.location.href='/scan'">
-    Next → 
-</button>
+    <button class="next-button" onclick="window.location.href='/scan'">
+        Next → 
+    </button>
 
     <!-- Personalization Form -->
     <div class="form-container">
         <h1><span class="typing-effect">Personalize Your Information</span></h1>
         <form action="/personalize" method="POST">
             <label for="user_input">Enter your dietary preferences below:</label>
-            <textarea id="user_input" name="user_input" rows="4" cols="50" placeholder="Example: I want to avoid red40" required></textarea><br><br>
+            <textarea id="user_input" name="user_input" rows="4" cols="50" placeholder="Example: I want to avoid red40" required>{{ personalized_text }}</textarea><br><br>
             <button type="submit">Save</button>
         </form>
         <p>{{ message }}</p>

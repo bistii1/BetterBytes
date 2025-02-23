@@ -5,9 +5,30 @@
   box-sizing: border-box;
 }
 
+@keyframes gradientAnimation {
+  0% {
+      background: linear-gradient(135deg, #780295, rgb(248, 132, 49), rgb(249, 255, 80), rgb(249, 255, 80));
+      background-size: 300% 300%; /* Start with a large size */
+  }
+  50% {
+      background: linear-gradient(135deg, #780295, rgb(248, 132, 49), rgb(249, 255, 80), rgb(249, 255, 80));
+      background-size: 200% 200%; /* Shrink to normal size */
+  }
+  100% {
+      background: linear-gradient(135deg, #780295, rgb(248, 132, 49), rgb(249, 255, 80), rgb(249, 255, 80));
+      background-size: 300% 300%; /* Expand back to larger size */
+  }
+}
+
+body {
+  background: linear-gradient(135deg, #780295, rgb(248, 132, 49), rgb(249, 255, 80), rgb(249, 255, 80));
+  background-size: 200% 200%; /* Starting size */
+  animation: gradientAnimation 5s infinite ease-in-out; /* Animate the gradient smoothly */
+}
+
 .container {
-  width: 100%;
-  max-width: 100%;
+  width: 90%;
+  max-width: 90%;
 }
 
 body {
@@ -22,7 +43,7 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: black;
   color: white;
   padding: 10px 50px;
   display: flex;
@@ -75,7 +96,8 @@ nav ul li a:hover {
 /* barcode scanner title */
 h1 {
   color: black;
-  font-size: 25px;
+  font-size: 40px;
+  font-weight: bold;
   margin-top: 70px; /* Adjust this value to move it down */
   margin-bottom: 20px;
   font-weight: normal; /* Remove bold */
@@ -87,22 +109,28 @@ h1 {
   display: flex;
   align-items: flex-start; /* Align items at the top */
   width: 100%;
+  margin-left: 30px;
+  gap: 30px;
 }
 
 #scanner-container {
   margin-top: 10px;
-  width: 50%; 
+  width: 50%;
   max-width: 50%;
+   /* Optional: add padding inside the container */
 }
 
 #camera {
   margin-top: 10px;
-  width: 100%; /* Ensure the webcam video fills its container */
+  width: 100%;
   max-width: 100%;
+  border: 2px solid #333; /* Add border directly to the camera element */
+  border-radius: 8px; /* Optional: rounded corners */
 }
 
 .product-info {
   margin-top: 10px;
+  margin-right: 30px;
   width: 50%; 
   max-width: 50%;
 }

@@ -19,15 +19,21 @@ def scanner():
 
 @app.route('/personalize', methods=['GET', 'POST'])
 def personalize():
+    personalized_text = ""
+    if os.path.exists("personalized_data.txt"):
+        with open("personalized_data.txt", "r") as file:
+            personalized_text = file.read().strip()  # Read and strip any excess whitespace
+
     if request.method == 'POST':
         user_input = request.form['user_input']  # Get the information the user submitted
         # Save the input to a file or database
-        with open("personalized_data.txt", "a") as file:
+        with open("personalized_data.txt", "w") as file:
             file.write(user_input + "\n")
 
-        return render_template('personalize.html', message="Your information has been saved successfully!")
+        return render_template('personalize.html', message="Your information has been saved successfully!", personalized_text=user_input)
 
-    return render_template('personalize.html', message="Click the save button to include your preferences in your result!")
+    return render_template('personalize.html', message="Click the save button to include your preferences in your result!", personalized_text=personalized_text)
+
 
 
 @app.route('/get-product-info', methods=['POST'])
@@ -82,11 +88,13 @@ def get_gpt_info(ingredients):
                 user_personalization = file.read().strip()
         
         # Create the base content to send to GPT-4
-        content = f"Provide an explanation of ingredients in this list that may be harmful without special characters: {ingredients}"
-
-        # If user personalization exists, add it to the content
+         # If user personalization exists, add it to the content
+        user_content = " "
         if user_personalization:
-            content += f"\n\nCreate a seperate paragraph that includes how the food relates to the user's personalization: {user_personalization}. Please remember not to include any special characters! Please bold the start of each bulleted section."
+            user_content += f"\n\nCreate a seperate paragraph that includes how the food relates to the user's personalization: {user_personalization}. Please remember not to include any special characters! Please bold the start of each bulleted section."
+        user_content += f"After that, Provide a paragraph explanation of ingredients in this list that may be harmful without special characters: {ingredients}"
+
+       
 
         client = OpenAI()
 
@@ -96,7 +104,7 @@ def get_gpt_info(ingredients):
                 {"role": "system", "content": "You are a food specialist. Provide a short bulleted of potentially harmful ingredients."},
                 {
                     "role": "user",
-                    "content": content
+                    "content": user_content
                 }
             ]
         )
