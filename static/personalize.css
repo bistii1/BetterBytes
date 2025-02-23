@@ -1,95 +1,115 @@
-.topnav {
-    background-color: #e88c4a;
-    overflow: hidden;
-    display: flex; /* Use flexbox for even spacing */
-    justify-content: space-evenly; /* Evenly space out the items */
-    height: 65px; /* Increase the height */
-    align-items: center; /* Center the text vertically */
-    position: fixed; /* Fix the position at the top */
-    top: 0; /* Set the top edge to the top of the viewport */
-    width: 100%; /* Make the nav bar take up the full width */
-    z-index: 1000; /* Ensure the nav bar stays on top of other content */
-  }
-  
-  /* Style the links inside the navigation bar */
-  .topnav a {
-    color: #f2f2f2;
-    text-align: center;
-    padding: 20px 24px; /* Increase padding to make the links larger */
-    text-decoration: none;
-    font-size: 22px; /* Increase font size */
-    font-weight: bold; /* Make it stand out */
-  }
-  
-  /* Change the color of links on hover */
-  .topnav a:hover {
-    background-color: #f07f7f;
-    color: black;
-  }
-  
-  /* Add a color to the active/current link */
-  .topnav a.active {
-    background-color: #94ad74;
-    color: white;
-  }
-
-/* General page layout */
-body {
-    font-family: 'Trebuchet MS', sans-serif;
-    background-color: #f7f7f7;  /* Light background color */
-    display: flex;
-    justify-content: center;  /* Center everything horizontally */
-    align-items: center;      /* Center everything vertically */
-    height: 100vh;             /* Full viewport height */
+/* Ensure everything is reset */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montesarrat', monospace; /* Apply Geist Mono font */
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;  /* Horizontally center */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 50px;
+    display: flex;
+    justify-content: space-between; /* Space between the logo and nav items */
+    align-items: center;
+    z-index: 1000;
+}
+
+header .logo {
+    display: flex;
+    justify-content: flex-start; /* Align logo to the left */
+}
+
+header .logo img {
+    width: 100px;
+}
+
+header nav {
+    display: flex;
+    justify-content: flex-end; /* Align nav items to the right */
+    gap: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #ff7f50;
+    border-radius: 5px;
 }
 
 /* Personalize Page Layout */
-form {
+.form-container {
     background-color: #fff;
-    padding: 20px;
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for form */
     width: 100%;
-    max-width: 600px; /* Max width for better readability */
+    max-width: 800px; /* Max width for better readability */
+    margin-top: 100px; /* Space from header */
 }
 
-/* Heading Style */
 h1 {
-    text-align: center;
-    color: #e88c4a;
-    font-size: 32px;
+    color: #333;
+    font-size: 25px;
     margin-bottom: 20px;
+    font-weight: normal; /* Remove bold */
+    text-align: center; /* Horizontally center text */
+    margin-top: 0; /* Remove any top margin */
 }
 
 /* Style for the form label */
 label {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: normal; /* Remove bold */
     color: #333;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 /* Textbox Style */
 textarea {
     width: 100%;
-    height: 150px;   /* Make the text box taller */
+    height: 400px;
     padding: 10px;
     font-size: 16px;
-    border: 2px solid #e88c4a;
+    border: 2px solid #333; /* Change border color */
     border-radius: 8px;
-    resize: none;     /* Prevent resizing */
+    resize: none;
     margin-bottom: 20px;
 }
 
 /* Submit button style */
 button {
-    background-color: #e88c4a;
+    background-color: #333; /* Change background color */
     color: white;
     padding: 12px 20px;
     font-size: 18px;
-    font-weight: bold;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -98,15 +118,14 @@ button {
 }
 
 button:hover {
-    background-color: #f07f7f;
+    background-color: #555; /* Slightly lighter hover effect */
     transition: background-color 0.3s ease;
 }
 
-/* Message Section Style */
-p {
-    text-align: center;
-    font-size: 16px;
-    color: #333;
-    margin-top: 20px;
+/* Placeholder Text Style */
+textarea::placeholder {
+    color: lightgray;  /* Light gray color */
+    font-style: italic; /* Optional: Italicize the placeholder text */
 }
+
 
