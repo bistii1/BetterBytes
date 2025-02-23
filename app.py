@@ -11,6 +11,10 @@ openai.api_key = os.getenv("sk-proj-n-N-H_sF02dJZHDhX5JSfV6DC48hAb_QXutED_Awhf4i
 
 @app.route('/')
 def home():
+    return render_template('homepage.html')
+
+@app.route('/scanner')
+def scanner():
     return render_template('scanner.html')
 
 @app.route('/get-product-info', methods=['POST'])

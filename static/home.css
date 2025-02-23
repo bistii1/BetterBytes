@@ -1,0 +1,122 @@
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #e88c4a;
+    overflow: hidden;
+    display: flex; /* Use flexbox for even spacing */
+    justify-content: space-evenly; /* Evenly space out the items */
+    height: 65px; /* Increase the height */
+    align-items: center; /* Center the text vertically */
+    position: fixed; /* Fix the position at the top */
+    top: 0; /* Set the top edge to the top of the viewport */
+    width: 100%; /* Make the nav bar take up the full width */
+    z-index: 1000; /* Ensure the nav bar stays on top of other content */
+}
+
+/* Add space at the top of the body to account for the fixed navbar */
+body {
+    padding-top: 80px; /* Match the height of the navbar */
+}
+  
+/* Style the links inside the navigation bar */
+.topnav a {
+    color: #f2f2f2;
+    text-align: center;
+    padding: 20px 24px; /* Increase padding to make the links larger */
+    text-decoration: none;
+    font-size: 22px; /* Increase font size */
+    font-weight: bold; /* Make it stand out */
+}
+  
+  /* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #f07f7f;
+    color: black;
+}
+  
+  /* Add a color to the active/current link */
+.topnav a.active {
+    background-color: #94ad74;
+    color: white;
+}
+
+.w3-text-white {
+    font-weight: bold; /* Make the text bold */
+    text-shadow: 2px 2px 4px #F5853F, -2px -2px 4px #F5853F, 2px -2px 4px #F5853F, -2px 2px 4px #F5853F; /* Create a black outline effect */
+}
+
+.bgimg .w3-display-middle span {
+    font-size: 120px; /* Increase size */
+    font-family: "Poppins", sans-serif; /* Change to your desired font */
+    font-weight: bold; /* Make it bolder */
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); /* Add soft shadow */
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Trebuchet MS', sans-serif;;
+  }
+  
+  .bgimg {
+    background-position: center;
+    background-size: cover;
+    background-image: url("/static/Boilermake/snack_background.png");
+    min-height: 75%;
+    margin-top: -15px; /* Adjust this value to match the navbar height */
+}
+  
+  .menu {
+    display: none;
+  }
+  
+  .w3-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .w3-bar-item {
+    padding: 16px;
+  }
+
+  /* know your food */
+  .w3-tag.w3-wide {
+    background-color: #f07f7f;
+    color: white; /* Change this to any color you want */
+    font-weight: bold;
+    font-size: 24px; /* Optional: Increase the text size */
+    border-radius: 20px; /* Rounds the corners */
+    margin-bottom: 10px;
+  }
+
+  .w3-sand {
+    padding-bottom: 50px; /* Adjust this value as needed */
+}
+
+  
+  /* Remove shadows from the card but keep the border */
+  .w3-card {
+    box-shadow: none; /* Remove any shadow */
+    border: 4px solid #f07f7f; /* Solid black border around the card */
+  }
+  
+  /* Add black borders to the table and its cells */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  td, th {
+    border: 4px solid #f07f7f; /* Add black borders to cells */
+    padding: 8px; /* Add padding to cells */
+    text-align: left;
+  }
+
+  .tablink {
+    font-size: 24px; /* Adjust this value as needed */
+    font-weight: bold; /* Optional: Make it bold for emphasis */
+}
+  
+
+
+  
