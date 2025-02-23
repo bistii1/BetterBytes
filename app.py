@@ -17,6 +17,19 @@ def home():
 def scanner():
     return render_template('scanner.html')
 
+@app.route('/personalize', methods=['GET', 'POST'])
+def personalize():
+    if request.method == 'POST':
+        user_input = request.form['user_input']  # Get the information the user submitted
+        # Save the input to a file or database
+        with open("personalized_data.txt", "a") as file:
+            file.write(user_input + "\n")
+
+        return render_template('personalize.html', message="Your information has been saved successfully!")
+
+    return render_template('personalize.html', message="Enter your personalized information below:")
+
+
 @app.route('/get-product-info', methods=['POST'])
 def get_product_info():
     data = request.json
