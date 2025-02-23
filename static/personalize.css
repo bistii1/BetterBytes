@@ -10,6 +10,7 @@ body {
     line-height: 1.6;
     display: flex;
     justify-content: center;  /* Horizontally center */
+    background-color: #c1c1c1; /* Set the background color to gray */
 }
 
 header {
@@ -21,7 +22,7 @@ header {
     padding: 10px 50px;
     display: flex;
     justify-content: space-between; /* Space between the logo and nav items */
-    align-items: center;
+    align-items: center;  /* Vertically center the content */
     z-index: 1000;
 }
 
@@ -30,8 +31,9 @@ header .logo {
     justify-content: flex-start; /* Align logo to the left */
 }
 
-header .logo img {
-    width: 100px;
+header .logo p {
+    color: white;
+    text-align: left;
 }
 
 header nav {
@@ -128,4 +130,28 @@ textarea::placeholder {
     font-style: italic; /* Optional: Italicize the placeholder text */
 }
 
+ /* Typing Animation */
+ @keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 60%;
+    }
+}
 
+.typing-effect {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid black;
+    animation: typing 1.5s steps(30) 0.3s 1 normal both, blink 0.75s step-end 3.5s forwards;
+    font-size: 24px; /* Ensure that font-size is applied here too */
+}
+
+/* Blinking cursor effect */
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
