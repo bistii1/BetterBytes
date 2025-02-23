@@ -1,0 +1,112 @@
+.topnav {
+    background-color: #e88c4a;
+    overflow: hidden;
+    display: flex; /* Use flexbox for even spacing */
+    justify-content: space-evenly; /* Evenly space out the items */
+    height: 65px; /* Increase the height */
+    align-items: center; /* Center the text vertically */
+    position: fixed; /* Fix the position at the top */
+    top: 0; /* Set the top edge to the top of the viewport */
+    width: 100%; /* Make the nav bar take up the full width */
+    z-index: 1000; /* Ensure the nav bar stays on top of other content */
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    color: #f2f2f2;
+    text-align: center;
+    padding: 20px 24px; /* Increase padding to make the links larger */
+    text-decoration: none;
+    font-size: 22px; /* Increase font size */
+    font-weight: bold; /* Make it stand out */
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #f07f7f;
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: #94ad74;
+    color: white;
+  }
+
+/* General page layout */
+body {
+    font-family: 'Trebuchet MS', sans-serif;
+    background-color: #f7f7f7;  /* Light background color */
+    display: flex;
+    justify-content: center;  /* Center everything horizontally */
+    align-items: center;      /* Center everything vertically */
+    height: 100vh;             /* Full viewport height */
+    margin: 0;
+}
+
+/* Personalize Page Layout */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for form */
+    width: 100%;
+    max-width: 600px; /* Max width for better readability */
+}
+
+/* Heading Style */
+h1 {
+    text-align: center;
+    color: #e88c4a;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* Style for the form label */
+label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Textbox Style */
+textarea {
+    width: 100%;
+    height: 150px;   /* Make the text box taller */
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #e88c4a;
+    border-radius: 8px;
+    resize: none;     /* Prevent resizing */
+    margin-bottom: 20px;
+}
+
+/* Submit button style */
+button {
+    background-color: #e88c4a;
+    color: white;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #f07f7f;
+    transition: background-color 0.3s ease;
+}
+
+/* Message Section Style */
+p {
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    margin-top: 20px;
+}
+
