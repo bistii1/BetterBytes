@@ -38,7 +38,7 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(255, 115, 0, 0.7);
+    background-color: rgb(0, 0, 0);
     color: white;
     padding: 10px 50px;
     display: flex;
@@ -129,7 +129,7 @@ textarea {
 
 /* Submit button style */
 button {
-    background-color: #333; /* Change background color */
+    background-color: black; /* Change background color */
     color: white;
     padding: 12px 20px;
     font-size: 18px;
@@ -141,7 +141,7 @@ button {
 }
 
 button:hover {
-    background-color: #555; /* Slightly lighter hover effect */
+    background-color: rgb(69, 69, 69);
     transition: background-color 0.3s ease;
 }
 
@@ -185,7 +185,7 @@ textarea::placeholder {
     bottom: 20px;
     right: 20px;
     padding: 10px 20px;
-    background-color: #333;
+    background-color: black;
     color: white;
     border: none;
     border-radius: 8px;
@@ -196,6 +196,6 @@ textarea::placeholder {
 }
 
 .next-button:hover {
-    background-color: #555;
+    background-color: rgb(69, 69, 69);;
 }
 
