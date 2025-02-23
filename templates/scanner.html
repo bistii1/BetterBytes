@@ -9,7 +9,7 @@
 </head>
 <div class="topnav">
     <a href="/">Home</a>
-    <a href="active" href="/scanner">Scan</a>
+    <a href="/scanner">Scan</a>
     <a href="#contact">Hear</a>
     <a href="/personalize">Personalize</a>
 </div>
@@ -21,11 +21,32 @@
                 <video id="camera" autoplay></video>
                 <canvas id="canvas" style="display:none;"></canvas>
             </div>
+
             <div class="product-info">
-                <p><strong>Detected Barcode:</strong> <span id="barcode"></span></p>
-                <p><strong>Food Product:</strong> <span id="product-info">Scan a barcode to see product details.</span></p>
-                <p><strong>Ingredient Information:</strong></p>
-                <div id="gpt-info" class="scrollable-box">Awaiting info...</div>
+                <!-- Box for Detected Barcode -->
+                <div class="info-box">
+                    <p><strong>Detected Barcode:</strong> <span id="barcode"></span></p>
+                </div>
+
+                <!-- Box for Food Product -->
+                <div class="info-box">
+                    <p><strong>Food Product:</strong> <span id="product-info">Scan a barcode to see product details.</span></p>
+                </div>
+
+                <!-- Box for Ingredient Information -->
+                <div class="info-box">
+                    <p><strong>Ingredient Information:</strong></p>
+                    <div id="gpt-info" class="scrollable-box">Awaiting info...</div>
+                </div>
+
+                <!-- Box for Personalization (optional) -->
+                {% if personalization %}
+                <!-- Box for Personalization (initially hidden) -->
+                    <div id="personalization-box" class="info-box" style="display:none;">
+                        <h3>Personalization:</h3>
+                        <p id="personalization-content"></p>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

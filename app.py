@@ -75,6 +75,19 @@ def get_product_info():
 
 def get_gpt_info(ingredients):
     try:
+        # Read the user's personalization if available
+        user_personalization = ""
+        if os.path.exists("personalized_data.txt"):
+            with open("personalized_data.txt", "r") as file:
+                user_personalization = file.read().strip()
+        
+        # Create the base content to send to GPT-4
+        content = f"Provide an explanation of ingredients in this list that may be harmful without special characters: {ingredients}"
+
+        # If user personalization exists, add it to the content
+        if user_personalization:
+            content += f"\n\nCreate a seperate paragraph that includes how the food relates to the user's personalization: {user_personalization}. Please remember not to include any special characters! Please bold the start of each bulleted section."
+
         client = OpenAI()
 
         gpt_response= client.chat.completions.create(
@@ -83,7 +96,7 @@ def get_gpt_info(ingredients):
                 {"role": "system", "content": "You are a food specialist. Provide a short bulleted of potentially harmful ingredients."},
                 {
                     "role": "user",
-                    "content": f"Provide an explanation of ingredients in this list that may be harmful without special characters: {ingredients}"
+                    "content": content
                 }
             ]
         )
