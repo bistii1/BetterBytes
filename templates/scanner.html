@@ -5,13 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barcode Scanner</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='scanner.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/quagga@0.12.1/dist/quagga.min.js"></script>
-</head>
-<div class="topnav">
-    <a href="/">Home</a>
-    <a href="/scanner">Scan</a>
-    <a href="#contact">Hear</a>
-    <a href="/personalize">Personalize</a>
+<!-- Header -->
+<header>
+    <div class="logo">
+        <p>Better Bytes</p>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/personalize">Personalize</a></li>
+            <li><a href="#scan">Scan</a></li>
+            <li><a href="#contact">Hear</a></li>
+        </ul>
+    </nav>
+</header>
+
 </div>
 <body>
     <div class="container">

@@ -1,132 +1,154 @@
-/* Modern Styling */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-.topnav {
-  background-color: #e88c4a;
-  overflow: hidden;
-  display: flex; /* Use flexbox for even spacing */
-  justify-content: space-evenly; /* Evenly space out the items */
-  height: 65px; /* Increase the height */
-  align-items: center; /* Center the text vertically */
-  position: fixed; /* Fix the position at the top */
-  top: 0; /* Set the top edge to the top of the viewport */
-  width: 100%; /* Make the nav bar take up the full width */
-  z-index: 1000; /* Ensure the nav bar stays on top of other content */
-}
-
-/* Style the links inside the navigation bar */
-.topnav a {
-  color: #f2f2f2;
-  text-align: center;
-  padding: 20px 24px; /* Increase padding to make the links larger */
-  text-decoration: none;
-  font-size: 22px; /* Increase font size */
-  font-weight: bold; /* Make it stand out */
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #f07f7f;
-  color: black;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #94ad74;
-  color: white;
+/* Ensure everything is reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to right, #ffedd5, #ffdab9);
-  color: #333;
+  font-family: 'Montesarrat', monospace; /* Apply Geist Mono font */
+  line-height: 1.6;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
+  justify-content: center;  /* Horizontally center */
+  background-color: #c1c1c1; /* Set the background color to gray */
 }
 
-.container {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  max-width: 700px;
-  width: 90%;
-  text-align: center;
-}
-
-h1 {
-  font-weight: 600;
-  color: #F5853F;
-  margin-bottom: 20px;
-}
-
-.scanner-info-container {
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px 50px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: space-between; /* Space between the logo and nav items */
+  align-items: center;  /* Vertically center the content */
+  z-index: 1000;
+}
+
+header .logo {
+  display: flex;
+  justify-content: flex-start; /* Align logo to the left */
+}
+
+header .logo p {
+  color: white;
+  text-align: left;
+}
+
+header nav {
+  display: flex;
+  justify-content: flex-end; /* Align nav items to the right */
   gap: 20px;
 }
 
-#scanner-container {
-  flex: 1;
+nav ul {
+  list-style: none;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px dashed #F5853F;
-  border-radius: 10px;
-  padding: 10px;
-  background: #fff3e6;
+  gap: 20px;
 }
 
-.product-info {
-  flex: 1;
-  text-align: left;
+nav ul li {
+  display: inline;
 }
 
-video {
-  width: 100%;
-  max-width: 300px;
-  border-radius: 10px;
-}
-
-button {
-  background: #F5853F;
+nav ul li a {
   color: white;
-  border: none;
-  padding: 12px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: #ff7f50;
+  border-radius: 5px;
+}
+
+/* Personalize Page Layout */
+.form-container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for form */
+  width: 100%;
+  max-width: 800px; /* Max width for better readability */
+  margin-top: 100px; /* Space from header */
+}
+
+h1 {
+  color: #333;
+  font-size: 25px;
+  margin-bottom: 20px;
+  font-weight: normal; /* Remove bold */
+  text-align: center; /* Horizontally center text */
+  margin-top: 0; /* Remove any top margin */
+}
+
+/* Style for the form label */
+label {
+  font-size: 18px;
+  font-weight: normal; /* Remove bold */
+  color: #333;
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* Textbox Style */
+textarea {
+  width: 100%;
+  height: 400px;
+  padding: 10px;
   font-size: 16px;
-  border-radius: 6px;
+  border: 2px solid #333; /* Change border color */
+  border-radius: 8px;
+  resize: none;
+  margin-bottom: 20px;
+}
+
+/* Submit button style */
+button {
+  background-color: #333; /* Change background color */
+  color: white;
+  padding: 12px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
-  margin-top: 15px;
+  display: block;
+  width: 100%;
 }
 
 button:hover {
-  background: #e07330;
+  background-color: #555; /* Slightly lighter hover effect */
+  transition: background-color 0.3s ease;
 }
 
-.output {
-  margin-top: 20px;
+.next-button {
+  position: fixed;
+  width: 150px;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 8px;
   font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
 }
 
-#barcode, #product-info {
-  font-weight: bold;
-  color: #F5853F;
+.next-button:hover {
+  background-color: #555;
 }
 
-.scrollable-box {
-  width: 90%;  /* Reduce width to center it better */
-  max-height: 150px;
-  overflow-y: auto;
-  border: 1px solid #ccc;
-  padding: 10px;
-  background: #fff3e6;
-  text-align: left;
-  border-radius: 5px;
-  margin: 0 auto; /* Centers it under the product info */
-  display: block;
+h1 {
+  color: black;
+  font-size: 25px;
+  margin-top: 70px; /* Adjust this value to move it down */
+  margin-bottom: 20px;
+  font-weight: normal; /* Remove bold */
+  text-align: center; /* Horizontally center text */
 }
