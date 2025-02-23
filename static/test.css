@@ -1,0 +1,208 @@
+/* Ensure everything is reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Geist Mono', monospace; /* Apply Geist Mono font */
+    line-height: 1.6;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 50px;
+    display: flex;
+    justify-content: space-between; /* Space between the logo and nav items */
+    align-items: center;
+    z-index: 1000;
+}
+
+header .logo {
+    display: flex;
+    justify-content: flex-start; /* Align logo to the left */
+}
+
+header .logo img {
+    width: 100px;
+}
+
+header nav {
+    display: flex;
+    justify-content: flex-end; /* Align nav items to the right */
+    gap: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #ff7f50;
+    border-radius: 5px;
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero .video-overlay {
+    position: relative;
+    height: 100%;
+}
+
+#hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+}
+
+.hero .content {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    color: white;
+    text-align: left;
+}
+
+.hero .content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero .content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.hero .content .cta-button {
+    background-color: #ff7f50;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.hero .content .cta-button:hover {
+    background-color: #ff4500;
+}
+
+.section-content {
+    padding: 100px 20px;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin-top: 60px;
+}
+
+.section-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+footer p {
+    font-size: 1rem;
+}
+
+/* Animated Text Section */
+.animated-text {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 40px; /* Space between text and the videos */
+}
+
+.animated-text h2 {
+    font-size: 2rem;
+    font-style: bold;
+    color: #333;
+    animation: fadeIn 3s ease-in-out; /* Apply fade-in animation */
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* New Steps Section */
+.steps {
+    margin-top: 60px; /* Avoid overlap with header */
+    padding: 50px 20px; /* Add padding to the section to create space around the videos */
+    display: flex;
+    justify-content: space-between; /* Align all videos in a row with equal space between */
+    gap: 20px; /* Adds consistent space between the videos */
+}
+
+.step-container {
+    width: 32%; /* Each video container takes up 32% width, leaving space between them */
+    height: 700px; /* Set a taller fixed height for each video container */
+    position: relative;
+    overflow: hidden;
+}
+
+.step-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the video fills the container and is cropped */
+    object-position: center; /* Ensures the video is centered */
+}
+
+.step-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Darken background for text readability */
+}
+
+.step-overlay h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.step-overlay p {
+    font-size: 1.2rem;
+}
