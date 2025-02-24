@@ -73,9 +73,7 @@ python app.py
 - Support additional dietary restrictions and allergens.
 
 ## Contributors
-- **Your Name**
-- **Other Team Members**
-
-## License
-This project is licensed under the MIT License.
+- Anika Thapar
+- Bisti Potdar
+- Sivani Sinha
 
